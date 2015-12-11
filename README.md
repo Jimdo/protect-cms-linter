@@ -40,7 +40,7 @@ to be silent when everything is fine. Line and column numbers will
 be applied automatically.
 
 
-```
+```js
 var linter = new Linter({
   noBareElement: Linter.defaultRules.noBareElement,
   noFooSelectors: (rule) => {
@@ -53,7 +53,7 @@ var linter = new Linter({
 
 Rules can also be manipulated after linter creation
 
-```
+```js
 var linter = new Linter();
 delete linter.rules.protectedNamespace;
 ```
