@@ -2,10 +2,6 @@
   "name": "jimdo-protect-cms-linter",
   "version": "0.0.1",
   "description": "lint css on compatibility with jimdo cms css",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "linter",
     "css",
@@ -14,5 +10,22 @@
     "protect"
   ],
   "author": "Jimdo GmbH",
-  "license": "MIT"
+  "bin": {
+    "protect-cms-lint": "cli.js"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "JASMINE_CONFIG_PATH=test/config.json jasmine"
+  },
+  "engines": {
+    "node": ">= 4.x"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "jasmine": "^2.4.1"
+  },
+  "dependencies": {
+    "css": "^2.2.1",
+    "glob": "^6.0.1"
+  }
 }
