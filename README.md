@@ -84,6 +84,17 @@ Error {
 }
 ```
 
+
+Tests
+-----
+
+If you find an edge-case where the linter build false results, please
+add a css file to [`test/fixtures/good`](https://github.com/Jimdo/protect-cms-linter/tree/master/test/fixtures/good)
+or [`test/fixtures/bad`](https://github.com/Jimdo/protect-cms-linter/tree/master/test/fixtures/bad) 
+
+These files will be tested in unit tests and on travis.
+
+
 LICENSE
 -------
 
