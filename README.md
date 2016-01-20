@@ -1,7 +1,10 @@
 Jimdo Protect CMS Linter
 ========================
 
-[![Build Status](https://travis-ci.org/Jimdo/protect-cms-linter.svg?branch=master)](https://travis-ci.org/Jimdo/protect-cms-linter)
+[![Build Status](https://img.shields.io/travis/Jimdo/protect-cms-linter/master.svg?style=flat-square)](https://travis-ci.org/Jimdo/protect-cms-linter)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
+[![David](https://img.shields.io/david/Jimdo/protect-cms-linter.svg?style=flat-square)](https://david-dm.org/Jimdo/protect-cms-linter)
+
 
 Linting tool to check if css potentially leaks rules into the Jimdo CMS interface.
 
