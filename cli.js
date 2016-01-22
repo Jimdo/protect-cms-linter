@@ -8,18 +8,51 @@ var path = require('path');
 var fs = require('fs');
 var Linter = require('./index');
 var linter = new Linter();
+var cssFileArgPos = 2;
+var sourcemapArgPos = 3;
 
-fs.readFile(path.resolve(process.argv[2]), 'utf-8', (err, content) => {
+function readFile(filePath) {
+  const resolvedFilePath = path.resolve(filePath);
+
+  return new Promise((resolve, reject) => {
+    fs.exists(resolvedFilePath, (exists) => {
+      if (!exists) {
+        return resolve(false);
+      }
+
+      fs.readFile(path.resolve(filePath), 'utf-8', (err, content) => {
+        if (err) {
+          return reject(err);
+        }
+        resolve(content);
+      });
+    });
+  });
+}
+
+Promise.all([
+  readFile(process.argv[cssFileArgPos]),
+  readFile(process.argv[sourcemapArgPos])
+]).then((contents) => {
+  var rawSourcemapJSON = null;
   var result = null;
 
-  if (err) {
-    console.error(err);
-    return process.exit(1);
+  if (!contents[0]) {
+    throw new Error('CSS file not found');
   }
 
-  result = linter.lint(content);
-  console.log(result);
-  if (result.status !== Linter.CONSTANTS.STATUS_OK) {
-    return process.exit(1);
+  if (contents[1]) {
+    rawSourcemapJSON = JSON.parse(contents[1]);
   }
+
+  result = linter.lint(contents[0], rawSourcemapJSON);
+
+  if (result.status !== Linter.CONSTANTS.STATUS_OK) {
+    throw result;
+  }
+
+  console.log('OK!');
+}).catch((err) => {
+  console.error(err);
+  process.exit(1);
 });
