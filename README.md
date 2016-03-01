@@ -9,6 +9,7 @@ Jimdo Protect CMS Linter
 Linting tool to check if css potentially leaks rules into the Jimdo CMS interface.
 
 Do you do grunt? - check out [grunt-jimdo-protect-cms](https://github.com/Jimdo/grunt-jimdo-protect-cms)
+Need as a service? - check out [styleguard](https://github.com/Jimdo/styleguard)
 
 
 Install
