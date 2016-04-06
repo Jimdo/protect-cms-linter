@@ -10,6 +10,7 @@ var Linter = require('./index');
 var linter = new Linter();
 var cssFileArgPos = 2;
 var sourcemapArgPos = 3;
+var inputFiles = [];
 
 function readFile(filePath) {
   const resolvedFilePath = path.resolve(filePath);
@@ -30,10 +31,12 @@ function readFile(filePath) {
   });
 }
 
-Promise.all([
-  readFile(process.argv[cssFileArgPos]),
-  readFile(process.argv[sourcemapArgPos])
-]).then((contents) => {
+inputFiles.push(readFile(process.argv[cssFileArgPos]));
+if (process.argv[sourcemapArgPos]) {
+  inputFiles.push(readFile(process.argv[sourcemapArgPos]));
+}
+
+Promise.all(inputFiles).then((contents) => {
   var rawSourcemapJSON = null;
   var result = null;
 
